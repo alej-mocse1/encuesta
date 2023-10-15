@@ -32,7 +32,7 @@ server.use((req, res, next) => {
 
 
 
-server.use(require("./routes/index.js"))
+server.use(require("./routes2/index.js"))
 
 
 module.exports = server
