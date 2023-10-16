@@ -132,14 +132,13 @@
     .DivInputs{
         min-width: 100vw;
         position: absolute;
-        top: 30vh;
+        top: 23vh;
     }
     
 
     .input1{
         width: 85%;
         font-size: 12.5px;
-        border: 1px solid black;
     }
 
     .input2{
@@ -172,10 +171,10 @@
 
     .btn{
           position: absolute;
-          bottom: 30px;
+          top: 90vh;
           width: 85%;   
           margin-top:0px;
-          margin-bottom: 0px; 
+          margin-bottom: 20px; 
     }
   
   }
