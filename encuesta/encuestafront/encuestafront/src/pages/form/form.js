@@ -80,7 +80,7 @@ const Formulario = ({ idPerona, id }) => {
       <h3 className={styles.h3}>Paso #1: Completa tus datos:</h3>
 
       <input
-        type="text"
+        type="number"
         className={styles.input}
         placeholder="¿Cuál es tu edad?"
         name="edad"
