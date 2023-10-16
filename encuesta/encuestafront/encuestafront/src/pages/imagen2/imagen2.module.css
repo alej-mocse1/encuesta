@@ -5,12 +5,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 98vw;
 }
 
 
 .h2{
     font-weight: 500;
     font-size: 26px;
+margin-top: 40px;
    }
    
 
@@ -22,7 +24,7 @@
 .imagenes img{
     width: 300px;
     height: auto;
-    margin: 30px;
+    
 }
 
 .btn{
@@ -35,8 +37,8 @@
     padding-left: 70px;
     padding-right : 70px;
     cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .btn:hover{

@@ -25,18 +25,17 @@ const Formulario = ({ idPerona, id }) => {
 
   
  const verificarInputHijos = () => {
-  const estado =  true
-  const cantidadDeHijos = parseInt(formData.cantidadHijos)
+  const cantidadDeHijos = parseInt(formData.cantidadHijos);
 
+  for (let i = 1; i <= cantidadDeHijos; i++) {
+    const name = `edadHijo${i}`;
+    if (formData[name] === "") {
+      return false;
+    }
+    console.log(formData[name]);
+  }
 
-  for (let i = 1; i < cantidadDeHijos; i++) {
- 
-   const name = `edadHijo${i}`;
-   if(formData.name === "")estado = false
-   console.log(formData.name)
- }
-
- return estado
+  return true;
 
 }
 
@@ -66,14 +65,15 @@ const Formulario = ({ idPerona, id }) => {
       edadHijo10: formData.edadHijo10,
     };
 
-    // &&   formData.cantidadHijos 
+ 
 
     try {
 
        if( formData.edad  &&   formData.tieneHijos   && formData.profesion ){
         if(formData.tieneHijos == "si"){
           const validarCamposHijos = verificarInputHijos()
-          if(validarCamposHijos === true){
+         
+          if(validarCamposHijos ==!  false){
             const response = await axios.post(
               "https://encuesta-production-1a3c.up.railway.app/encuesta",
               data
