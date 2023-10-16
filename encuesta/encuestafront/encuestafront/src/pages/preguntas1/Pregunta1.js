@@ -36,15 +36,18 @@ const Preguntas = ({id}) => {
           };
 
         try {
-            // Hacer la petición POST utilizando Axios
-            const response = await axios.put('https://encuesta-production-1a3c.up.railway.app/preguntas', data);
-        
-            // Manejar la respuesta del servidor si es necesario
-            console.log('Respuesta del servidor:', response.data);
-        
-            // Llamada a la función idPerona
            
-            navigate("/img2");
+            if(respuestas.pregunta1 && respuestas.pregunta2 && respuestas.pregunta3 && respuestas.pregunta4 && respuestas.pregunta5  ){
+              const response = await axios.put('https://encuesta-production-1a3c.up.railway.app/preguntas', data);
+        
+              // Manejar la respuesta del servidor si es necesario
+              console.log('Respuesta del servidor:', response.data);
+          
+              // Llamada a la función idPerona
+             
+              navigate("/img2");
+            }
+
           } catch (error) {
             // Manejar errores de la petición
             console.error('Error al hacer la petición POST:', error);

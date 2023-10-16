@@ -37,14 +37,17 @@ const Preguntas2 = ({id}) => {
 
         try {
             // Hacer la petición POST utilizando Axios
-            const response = await axios.put('https://encuesta-production-1a3c.up.railway.app/preguntas', data);
+            if(respuestas.pregunta6 && respuestas.pregunta7 && respuestas.pregunta8 && respuestas.pregunta9 && respuestas.pregunta10  ){
+              const response = await axios.put('https://encuesta-production-1a3c.up.railway.app/preguntas', data);
         
-            // Manejar la respuesta del servidor si es necesario
-            console.log('Respuesta del servidor:', response.data);
-        
-            // Llamada a la función idPerona
-           
-            navigate("/gracias");
+              // Manejar la respuesta del servidor si es necesario
+              console.log('Respuesta del servidor:', response.data);
+          
+              // Llamada a la función idPerona
+             
+              navigate("/gracias");
+            }
+
           } catch (error) {
             // Manejar errores de la petición
             console.error('Error al hacer la petición POST:', error);

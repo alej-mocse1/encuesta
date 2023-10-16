@@ -49,22 +49,22 @@ const Formulario = ({ idPerona, id }) => {
       edadHijo10: formData.edadHijo10,
     };
 
-    console.log(data)
+
 
     try {
-      // Hacer la petición POST utilizando Axios
-      const response = await axios.post(
-        "https://encuesta-production-1a3c.up.railway.app/encuesta",
-        data
-      );
 
-      // Manejar la respuesta del servidor si es necesario
-      console.log("Respuesta del servidor:", response.data);
+       if( formData.edad  &&   formData.tieneHijos   &&   formData.cantidadHijos  && formData.profesion ){
+        const response = await axios.post(
+            "https://encuesta-production-1a3c.up.railway.app/encuesta",
+            data
+          );      
+          idPerona(response.data.resp.id);
+          navigate("/img1");
+       }
+     
 
-      // Llamada a la función idPerona
-      console.log(id);
-      idPerona(response.data.resp.id);
-      navigate("/img1");
+    
+
     } catch (error) {
       // Manejar errores de la petición
       console.error("Error al hacer la petición POST:", error);
