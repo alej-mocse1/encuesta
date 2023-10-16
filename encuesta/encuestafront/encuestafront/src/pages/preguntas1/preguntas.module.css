@@ -132,7 +132,6 @@
     .DivInputs{
         min-width: 100vw;
         z-index: 300;
-        border: 1px solid black;
         padding-top: 30px;
         padding-bottom: 30px;
         background-color: white;

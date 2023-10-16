@@ -56,6 +56,8 @@ const Preguntas2 = ({id}) => {
         <div className={styles.DivPadre}>
            <h2>Paso #5: Responde las siguientes preguntas</h2>
       
+
+           <div className={styles.DivInputs}>
      <input
         type="text"
         className={styles.input1}
@@ -92,7 +94,7 @@ const Preguntas2 = ({id}) => {
         onChange={(e) => handleInputChange(e, 'pregunta10')}
       />
 
-
+</div>
 
 
        <button  onClick={handleclickData} className={styles.btn}>SIGUIENTE</button>

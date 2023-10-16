@@ -9,7 +9,6 @@
 
 
 .DivPadre h2{
-  margin-bottom: 45px;
   font-weight: 400;
   font-size: 32px;
   text-align: center;
@@ -104,21 +103,38 @@
     transition: 1s;
    }
    
-
+   .DivInputs{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 @media screen and (max-width: 768px) {
+
+
     .DivPadre {
         min-height: 100vh;
-    }
+        }
+  
+    
     .DivPadre h2{
-        position: absolute;
-        top: 20px;
-    }
+      position: absolute;
+      top: 0px;
+      }
 
     .DivPadre input::placeholder {
         font-size: 12.5px; 
 
+    }
+
+    .DivInputs{
+        min-width: 100vw;
+        z-index: 300;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: white;
     }
     
 
@@ -156,9 +172,11 @@
 
 
     .btn{
-        position: absolute;
-        bottom: 20px; 
-        width: 85%;    
+          position: absolute;
+          bottom: 20px;
+          width: 85%;   
+          margin-top:40px;
+          margin-bottom: 20px; 
     }
   
   }
