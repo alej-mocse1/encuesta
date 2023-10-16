@@ -110,13 +110,13 @@
 @media screen and (max-width: 768px) {
 
     .DivPadre {
-        min-height: 100vh;
+        min-height: 1000px;
+
         
     }
     .DivPadre h2{
       position: absolute;
       top: 20px;
-      border: 1px solid black;
       }
 
     .DivPadre input::placeholder {
