@@ -23,6 +23,23 @@ const Formulario = ({ idPerona, id }) => {
     profesion: "",
   });
 
+  
+ const verificarInputHijos = () => {
+  const estado =  true
+  const cantidadDeHijos = parseInt(formData.cantidadHijos)
+
+
+  for (let i = 1; i < cantidadDeHijos; i++) {
+ 
+   const name = `edadHijo${i}`;
+   if(formData.name === "")estado = false
+   console.log(formData.name)
+ }
+
+ return estado
+
+}
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -49,27 +66,42 @@ const Formulario = ({ idPerona, id }) => {
       edadHijo10: formData.edadHijo10,
     };
 
-
+    // &&   formData.cantidadHijos 
 
     try {
 
-       if( formData.edad  &&   formData.tieneHijos   &&   formData.cantidadHijos  && formData.profesion ){
-        const response = await axios.post(
-            "https://encuesta-production-1a3c.up.railway.app/encuesta",
-            data
-          );      
-          idPerona(response.data.resp.id);
-          navigate("/img1");
-       }
-     
+       if( formData.edad  &&   formData.tieneHijos   && formData.profesion ){
+        if(formData.tieneHijos == "si"){
+          const validarCamposHijos = verificarInputHijos()
+          if(validarCamposHijos === true){
+            const response = await axios.post(
+              "https://encuesta-production-1a3c.up.railway.app/encuesta",
+              data
+            );      
+            idPerona(response.data.resp.id);
+            navigate("/img1");
+          } 
 
-    
+        }
 
-    } catch (error) {
+        if(formData.tieneHijos == "no"){
+      
+            const response = await axios.post(
+              "https://encuesta-production-1a3c.up.railway.app/encuesta",
+              data
+            );      
+            idPerona(response.data.resp.id);
+            navigate("/img1");
+          } 
+
+        }
+      
+     }catch (error) {
       // Manejar errores de la petición
       console.error("Error al hacer la petición POST:", error);
     }
   };
+
 
   return (
     <div className={styles.form}>
@@ -105,7 +137,9 @@ const Formulario = ({ idPerona, id }) => {
             No
           </option>
         </select>
-        <input
+
+        { formData.tieneHijos == "si"&& (
+          <input
           type="number"
           className={styles.input}
           placeholder="¿Cuantos?"
@@ -113,6 +147,7 @@ const Formulario = ({ idPerona, id }) => {
           value={formData.cantidadHijos}
           onChange={handleInputChange}
         ></input>
+        )}
 
         {parseInt(formData.cantidadHijos) > 0 && (
           <input
