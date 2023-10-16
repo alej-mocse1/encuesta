@@ -109,7 +109,8 @@
 
 @media screen and (max-width: 768px) {
     .DivPadre h2{
-        margin-bottom: 135px;        
+      position: absolute;
+      top: 20px;
       }
 
     .DivPadre input::placeholder {
@@ -152,7 +153,8 @@
 
 
     .btn{
-        margin-top:130px;   
+        position: absolute;
+        bottom: 20px; 
         width: 85%;    
     }
   
