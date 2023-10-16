@@ -108,6 +108,11 @@
 
 @media screen and (max-width: 768px) {
 
+
+    .DivPadre {
+        min-height: 100vh;
+        }
+  
     
     .DivPadre h2{
       position: absolute;
