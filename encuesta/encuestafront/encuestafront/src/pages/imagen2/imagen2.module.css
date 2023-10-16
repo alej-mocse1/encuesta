@@ -1,0 +1,72 @@
+.DivPadre{
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.h2{
+    font-weight: 500;
+    font-size: 26px;
+   }
+   
+
+.imagenes{
+    display: flex;
+    flex-direction: row;
+}
+
+.imagenes img{
+    width: 250px;
+    height: auto;
+    margin: 30px;
+}
+
+.btn{
+    padding: 15px;
+    border-radius: 15px;
+    background-color: black;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    padding-left: 70px;
+    padding-right : 70px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn:hover{
+    background-color: rgb(68, 67, 67);
+    transition: 1s;
+   }
+   
+
+
+
+
+@media screen and (max-width: 768px) {
+
+
+    .DivPadre{
+        padding-bottom: 30px;
+        height: auto;
+    }
+    .h2 {
+        text-align: center;
+      }
+    
+ .imagenes{
+    flex-direction: column;
+ }
+
+ .imagenes img{
+   width: 150px;
+ }
+
+
+  
+  }

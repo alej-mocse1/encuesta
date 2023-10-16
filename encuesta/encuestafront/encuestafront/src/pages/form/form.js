@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import styles from './form.module.css';
+import axios from 'axios';
+import {  useNavigate } from "react-router-dom";
 
 
 
-const Formulario = () => {
+
+const Formulario = ({idPerona,id}) => {
+    
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         edad: '',
@@ -25,10 +30,36 @@ const Formulario = () => {
 
 
 
-    const handleEmpezarClick = () => {
-        // Aquí puedes hacer algo con los datos recolectados, por ejemplo, enviarlos a un servidor o mostrarlos en la consola.
-        console.log('Datos recolectados:', formData);
-    };
+    const handleEmpezarClick = async () => {
+        const data = {
+          hijos: formData.tieneHijos,
+          cantidad: formData.cantidadHijos,
+          profesion: formData.profesion,
+          edad: formData.edad,
+          edadHijo: formData.edadHijo1
+        };
+      
+        try {
+          // Hacer la petición POST utilizando Axios
+          const response = await axios.post('https://encuesta-production-1a3c.up.railway.app/encuesta', data);
+      
+          // Manejar la respuesta del servidor si es necesario
+          console.log('Respuesta del servidor:', response.data);
+      
+          // Llamada a la función idPerona
+          console.log(id)
+          idPerona(response.data.resp.id);
+          navigate("/img1");
+        } catch (error) {
+          // Manejar errores de la petición
+          console.error('Error al hacer la petición POST:', error);
+        }
+
+    }
+      
+      
+      
+      
 
     return(
         <div className={styles.form}>
