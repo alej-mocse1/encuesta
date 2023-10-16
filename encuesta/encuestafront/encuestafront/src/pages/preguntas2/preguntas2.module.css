@@ -108,10 +108,13 @@
 
 
 @media screen and (max-width: 768px) {
+    .DivPadre {
+        min-height: 100vh;
+    }
     .DivPadre h2{
-      position: absolute;
-      top: 20px;
-      }
+        position: absolute;
+        top: 20px;
+    }
 
     .DivPadre input::placeholder {
         font-size: 12.5px; 
