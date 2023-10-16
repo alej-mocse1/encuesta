@@ -131,8 +131,7 @@
 
     .DivInputs{
         min-width: 100vw;
-        position: absolute;
-        top: 23vh;
+        z-index: 30px;
     }
     
 
@@ -171,9 +170,9 @@
 
     .btn{
           position: absolute;
-          top: 90vh;
+          bottom: 20px;
           width: 85%;   
-          margin-top:0px;
+          margin-top:40px;
           margin-bottom: 20px; 
     }
   
