@@ -15,7 +15,7 @@ const {
 //   native: false, 
 // });
 
-const sequelize = new Sequelize(`postgresql://postgres:QbZylT7o50HSjOWvJEsk@containers-us-west-53.railway.app:7127/railway`, {
+const sequelize = new Sequelize(`postgresql://postgres:baOIqlTZLrGKFeFc9v6n@containers-us-west-187.railway.app:6510/railway`, {
   logging: false, 
   native: false, 
 });
