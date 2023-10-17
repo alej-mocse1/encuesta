@@ -102,6 +102,22 @@ const Formulario = ({ idPerona, id }) => {
     }
   };
 
+  const handleInputNumber= (e) => {
+  
+    const inputValue = e.target.value;
+    const { name } = e.target;
+
+    // Verifica si el valor es numérico
+    if (!isNaN(inputValue)) {
+      // Actualiza el estado solo si es un valor numérico
+   
+      setFormData({
+          ...formData ,
+          [name]: inputValue,
+        });  
+    
+    }
+  };
 
   return (
     <div className={styles.form}>
@@ -112,12 +128,12 @@ const Formulario = ({ idPerona, id }) => {
       <h3 className={styles.h3}>Paso #1: Completa tus datos:</h3>
 
       <input
-        type="number"
+        type="text"
         className={styles.input}
         placeholder="¿Cuál es tu edad?"
         name="edad"
         value={formData.edad}
-        onChange={handleInputChange}
+        onChange={handleInputNumber}
         style={{ marginBottom: "10px" }}
       ></input>
 
@@ -140,12 +156,12 @@ const Formulario = ({ idPerona, id }) => {
 
         { formData.tieneHijos == "si"&& (
           <input
-          type="number"
+          type="text"
           className={styles.input}
           placeholder="¿Cuantos?"
           name="cantidadHijos"
           value={formData.cantidadHijos}
-          onChange={handleInputChange}
+          onChange={handleInputNumber}
         ></input>
         )}
 
@@ -156,7 +172,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 1"
             name="edadHijo1"
             value={formData.edadHijo1}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
       </div>
@@ -169,7 +185,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 2"
             name="edadHijo2"
             value={formData.edadHijo2}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -180,7 +196,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 3"
             name="edadHijo3"
             value={formData.edadHijo3}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -191,7 +207,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 4"
             name="edadHijo4"
             value={formData.edadHijo4}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -205,7 +221,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 5"
             name="edadHijo5"
             value={formData.edadHijo5}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -216,7 +232,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 6"
             name="edadHijo6"
             value={formData.edadHijo6}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -227,7 +243,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 7"
             name="edadHijo7"
             value={formData.edadHijo7}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
       </div>
@@ -240,7 +256,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 8"
             name="edadHijo8"
             value={formData.edadHijo8}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
 
@@ -251,7 +267,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 9"
             name="edadHijo9"
             value={formData.edadHijo9}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
         {parseInt(formData.cantidadHijos) > 9 && (
@@ -261,7 +277,7 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 10"
             name="edadHijo10"
             value={formData.edadHijo10}
-            onChange={handleInputChange}
+            onChange={handleInputNumber}
           ></input>
         )}
       </div>

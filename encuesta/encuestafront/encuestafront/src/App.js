@@ -8,6 +8,7 @@ import Preguntas from './pages/preguntas1/Pregunta1.js';
 import Img2 from './pages/imagen2/imagen2.js';
 import Preguntas2 from './pages/preguntas2/Pregunta2.js';
 import Gracias from './pages/gracias/gracias.js';
+import Excel from './pages/excel/excel.js';
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
          <Route path="/preguntas" element={<Preguntas  id={id}/>} />  
          <Route path="/img2" element={<Img2 />} /> 
          <Route path="/preguntas2" element={<Preguntas2  id={id}/>} />  
-         <Route path="/gracias" element={<Gracias/>} />  
+         <Route path="/gracias" element={<Gracias/>} /> 
+         <Route path="/Excel" element={<Excel/>} /> 
       </Routes>  
     </div>
   );

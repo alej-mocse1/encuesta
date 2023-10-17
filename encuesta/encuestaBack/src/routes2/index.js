@@ -94,6 +94,22 @@ router.get('/dataEncuesta', async(req, res) => {
 });
 
 
+// router.delete('/dataEncuesta', async(req, res) => {
+//   try {
+//     await Users.destroy({
+//       where: {},
+//       truncate: true
+//     });
+
+//     res.status(200).send('Todos los datos han sido eliminados correctamente.');
+//   } catch (error) {
+//     console.error('Error:', error);
+//     res.status(500).send('Hubo un error en el servidor');
+//   }
+// });
+
+
+
 
 
   module.exports = router
