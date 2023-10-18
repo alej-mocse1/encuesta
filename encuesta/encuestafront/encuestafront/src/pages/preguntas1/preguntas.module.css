@@ -162,6 +162,13 @@
         font-size: 12.5px;
     }
 
+    .input4{
+        width: 85%;
+        font-size: 12.5px;
+    }
+    .input4::placeholder {
+        font-size: 9px !important; 
+    }
     .input5{
         width: 85%;
         font-size: 12.5px;
