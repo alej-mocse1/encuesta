@@ -175,11 +175,9 @@
         font-size: 12.5px;
         padding-left: 0;
         padding-right: 0;
-        color: red;
-        border: 2px solid rgb(43, 128, 226) !important;
     }
     .input4::placeholder {
-        font-size: 8px !important;
+        font-size: 9px !important;
     }
     .input5{
         width: 95%;
