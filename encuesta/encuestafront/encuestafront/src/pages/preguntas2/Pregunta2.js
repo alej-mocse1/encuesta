@@ -88,7 +88,7 @@ const Preguntas2 = ({id}) => {
       <input
         type="text"
         className={styles.input4}
-        placeholder="¿Si fueras dueña de esta marca, publicarías esto en redes sociales? ¿por qué?"
+        placeholder="¿Si fueras dueña de esta marca, publicarías esto en rr.ss? ¿por qué?"
         value={respuestas.pregunta9}
         onChange={(e) => handleInputChange(e, 'pregunta9')}
         style={{ border: (respuestas.pregunta9 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
