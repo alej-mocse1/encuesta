@@ -8,7 +8,13 @@ const Preguntas = ({id}) => {
 
 
     const navigate = useNavigate();
+    const [alert, setAlert] = useState(false);
 
+
+    const fnAlert= () => {
+      setAlert(true)   
+    }
+    
 
     const [respuestas, setRespuestas] = useState({
         pregunta1: '',
@@ -29,7 +35,7 @@ const Preguntas = ({id}) => {
 
       
     const handleclickData= async () => {
-
+      setAlert(true)   
         const data = {
                 ...respuestas,
                 id:id
@@ -57,6 +63,8 @@ const Preguntas = ({id}) => {
     return(
         <div className={styles.DivPadre}>
            <h2>Paso #3: Responde las siguientes preguntas</h2>
+
+           {alert && <h4 className={styles.h4}>Por favor: completa los datos</h4>}
       
 
       <div className={styles.DivInputs}>
@@ -66,13 +74,15 @@ const Preguntas = ({id}) => {
         placeholder="¿Qué sentiste con lo que te acaba de mostrar Pomarola?"
         value={respuestas.pregunta1}
         onChange={(e) => handleInputChange(e, 'pregunta1')}
-      />
+        style={{ border: (respuestas.pregunta1 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
+     />
       <input
         type="text"
         className={styles.input2}
         placeholder="¿Qué te quiere decir Pomarola?"
         value={respuestas.pregunta2}
         onChange={(e) => handleInputChange(e, 'pregunta2')}
+        style={{ border: (respuestas.pregunta2 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
       />
       <input
         type="text"
@@ -80,6 +90,7 @@ const Preguntas = ({id}) => {
         placeholder="¿Qué te parece eso que te dijo? ¿Y por qué?"
         value={respuestas.pregunta3}
         onChange={(e) => handleInputChange(e, 'pregunta3')}
+        style={{ border: (respuestas.pregunta3 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
       />
       <input
         type="text"
@@ -87,6 +98,7 @@ const Preguntas = ({id}) => {
         placeholder="¿Si fueras dueña de esta marca, publicarías esto en redes sociales? ¿por qué?"
         value={respuestas.pregunta4}
         onChange={(e) => handleInputChange(e, 'pregunta4')}
+        style={{ border: (respuestas.pregunta4 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
       />
       <input
         type="text"
@@ -94,6 +106,7 @@ const Preguntas = ({id}) => {
         placeholder={`¿Qué sentiste con la frase "Estamos bien del tomate"?`}
         value={respuestas.pregunta5}
         onChange={(e) => handleInputChange(e, 'pregunta5')}
+        style={{ border: (respuestas.pregunta5 === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
       />
 </div>
 

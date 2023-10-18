@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Formulario = ({ idPerona, id }) => {
   const navigate = useNavigate();
 
+  const [alert, setAlert] = useState(false);
   const [formData, setFormData] = useState({
     edad: "",
     tieneHijos: "",
@@ -30,6 +31,7 @@ const Formulario = ({ idPerona, id }) => {
   for (let i = 1; i <= cantidadDeHijos; i++) {
     const name = `edadHijo${i}`;
     if (formData[name] === "") {
+
       return false;
     }
     console.log(formData[name]);
@@ -48,6 +50,7 @@ const Formulario = ({ idPerona, id }) => {
   };
 
   const handleEmpezarClick = async () => {
+    setAlert(true)
     const data = {
       hijos: formData.tieneHijos,
       cantidad: formData.cantidadHijos,
@@ -64,7 +67,6 @@ const Formulario = ({ idPerona, id }) => {
       edadHijo9: formData.edadHijo9,
       edadHijo10: formData.edadHijo10,
     };
-
  
 
     try {
@@ -85,7 +87,7 @@ const Formulario = ({ idPerona, id }) => {
         }
 
         if(formData.tieneHijos == "no"){
-      
+     
             const response = await axios.post(
               "https://encuesta-production-1a3c.up.railway.app/encuesta",
               data
@@ -127,6 +129,8 @@ const Formulario = ({ idPerona, id }) => {
 
       <h3 className={styles.h3}>Paso #1: Completa tus datos:</h3>
 
+      {alert && <h4 className={styles.h4}>Por favor: completa los datos</h4>}
+
       <input
         type="text"
         className={styles.input}
@@ -134,7 +138,7 @@ const Formulario = ({ idPerona, id }) => {
         name="edad"
         value={formData.edad}
         onChange={handleInputNumber}
-        style={{ marginBottom: "10px" }}
+        style={{ border: (formData.edad === "" &&  alert == true) ? '2px solid red' : '2px solid black' , marginBottom: "10px" }}
       ></input>
 
       <div className={styles.input3}>
@@ -142,6 +146,7 @@ const Formulario = ({ idPerona, id }) => {
           name="tieneHijos"
           value={formData.tieneHijos}
           onChange={handleInputChange}
+          style={{ border: (formData.tieneHijos === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
         >
           <option className={styles.op} value="¿Tienes hijos?">
             ¿Tienes hijos?
@@ -162,6 +167,7 @@ const Formulario = ({ idPerona, id }) => {
           name="cantidadHijos"
           value={formData.cantidadHijos}
           onChange={handleInputNumber}
+          style={{ border: (formData.cantidadHijos === "" &&  alert == true) ? '2px solid red' : '2px solid black'  }}
         ></input>
         )}
 
@@ -173,12 +179,14 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo1"
             value={formData.edadHijo1}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo1 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
       </div>
 
       <div className={styles.input3}>
         {parseInt(formData.cantidadHijos) > 1 && (
+        
           <input
             type="text"
             className={styles.input}
@@ -186,7 +194,10 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo2"
             value={formData.edadHijo2}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo2 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
+        
+          
         )}
 
         {parseInt(formData.cantidadHijos) > 2 && (
@@ -196,7 +207,8 @@ const Formulario = ({ idPerona, id }) => {
             placeholder="Edad hijo 3"
             name="edadHijo3"
             value={formData.edadHijo3}
-            onChange={handleInputNumber}
+            onChange={handleInputNumber} 
+            style={{ border: (formData.edadHijo3 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
 
@@ -208,6 +220,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo4"
             value={formData.edadHijo4}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo4 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
 
@@ -222,6 +235,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo5"
             value={formData.edadHijo5}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo5 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
 
@@ -233,6 +247,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo6"
             value={formData.edadHijo6}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo6 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
 
@@ -244,6 +259,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo7"
             value={formData.edadHijo7}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo7 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
       </div>
@@ -257,6 +273,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo8"
             value={formData.edadHijo8}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo8 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
 
@@ -268,6 +285,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo9"
             value={formData.edadHijo9}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo9 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
         {parseInt(formData.cantidadHijos) > 9 && (
@@ -278,6 +296,7 @@ const Formulario = ({ idPerona, id }) => {
             name="edadHijo10"
             value={formData.edadHijo10}
             onChange={handleInputNumber}
+            style={{ border: (formData.edadHijo10 === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
           ></input>
         )}
       </div>
@@ -289,6 +308,7 @@ const Formulario = ({ idPerona, id }) => {
         name="profesion"
         value={formData.profesion}
         onChange={handleInputChange}
+        style={{ border: (formData.profesion === "" &&  alert == true) ? '2px solid red' : '2px solid black'}}
       ></input>
 
       <button className={styles.btn} onClick={handleEmpezarClick}>
