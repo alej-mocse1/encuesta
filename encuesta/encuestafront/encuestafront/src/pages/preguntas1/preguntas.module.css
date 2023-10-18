@@ -123,8 +123,8 @@
   
     
     .DivPadre h2{
-      position: absolute;
-      top: 0px;
+
+      margin-top: -0vh;
       }
 
     .DivPadre input::placeholder {
@@ -175,11 +175,11 @@
 
 
     .btn{
-          position: absolute;
-          bottom: 20px;
+          position: relative;
+        
           width: 85%;   
           margin-top:40px;
-          margin-bottom: 20px; 
+         
     }
   
   }

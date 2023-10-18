@@ -80,6 +80,7 @@ const Formulario = ({ idPerona, id }) => {
               "https://encuesta-production-1a3c.up.railway.app/encuesta",
               data
             );      
+            setAlert(false)
             idPerona(response.data.resp.id);
             navigate("/img1");
           } 
@@ -92,6 +93,7 @@ const Formulario = ({ idPerona, id }) => {
               "https://encuesta-production-1a3c.up.railway.app/encuesta",
               data
             );      
+            setAlert(false)
             idPerona(response.data.resp.id);
             navigate("/img1");
           } 

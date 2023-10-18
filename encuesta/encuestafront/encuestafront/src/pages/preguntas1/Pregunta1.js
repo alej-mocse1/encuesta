@@ -50,7 +50,7 @@ const Preguntas = ({id}) => {
               console.log('Respuesta del servidor:', response.data);
           
               // Llamada a la función idPerona
-             
+              setAlert(true)
               navigate("/img2");
             }
 
