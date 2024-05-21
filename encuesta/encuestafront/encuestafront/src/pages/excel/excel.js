@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 
 const Excel = () => {
   const [encuestaData, setEncuestaData] = useState([]);
-  const [ganadores, setGanadores] = useState({});
+  const [ganadores, setGanadores] = useState([]);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -28,65 +28,41 @@ const Excel = () => {
   };
 
   const seleccionarGanadores = (data) => {
-    const cadenas = [
-      "PLAZA VEA",
-      "WONG",
-      "METRO",
-      "TOTTUS",
-      "MAKRO",
-      "OXXO",
-      "TAMBO",
-      "VIVANDA",
-      "OTRO AASS",
-    ];
-    const ganadores = {};
-    const ganadoresIds = new Set();
+    const supermercados = [...new Set(data.map(item => item.supermercado))];
+    const ganadoresSeleccionados = [];
+    const participantesPorSupermercado = {};
 
-    cadenas.forEach((cadena) => {
-      const participantes = data.filter(
-        (participante) =>
-          participante.cadena === cadena &&
-          !ganadoresIds.has(participante.super)
+    // Inicializar el diccionario de participantes por supermercado
+    supermercados.forEach(supermercado => {
+      participantesPorSupermercado[supermercado] = data.filter(
+        item => item.supermercado === supermercado
       );
-      if (participantes.length > 0) {
-        const ganadorIndex = Math.floor(Math.random() * participantes.length);
-        const ganador = participantes[ganadorIndex];
-        ganadores[cadena] = ganador;
-        ganadoresIds.add(ganador.id);
-      }
     });
 
-    return ganadores;
+    let totalGanadores = 0;
+    let indexSupermercado = 0;
+
+    while (totalGanadores < 14) {
+      const supermercadoActual = supermercados[indexSupermercado];
+      const participantes = participantesPorSupermercado[supermercadoActual];
+
+      if (participantes.length > 0) {
+        const ganadorIndex = Math.floor(Math.random() * participantes.length);
+        const ganador = participantes.splice(ganadorIndex, 1)[0];
+        ganadoresSeleccionados.push(ganador);
+        totalGanadores++;
+      }
+
+      // Pasar al siguiente supermercado
+      indexSupermercado = (indexSupermercado + 1) % supermercados.length;
+    }
+
+    return ganadoresSeleccionados;
   };
 
   const descargarExcel = () => {
-    const ganadoresPorSupermercado = {};
-
-    encuestaData.forEach((ganador) => {
-      const supermercado = ganador.super;
-      if (!ganadoresPorSupermercado[supermercado]) {
-        ganadoresPorSupermercado[supermercado] = [];
-      }
-      ganadoresPorSupermercado[supermercado].push(ganador);
-    });
-
-    // Seleccionar un ganador al azar de cada supermercado y guardarlos en un array
-    const ganadoresFinales = [];
-    Object.values(ganadoresPorSupermercado).forEach((ganadoresSupermercado) => {
-      const ganadorIndex = Math.floor(
-        Math.random() * ganadoresSupermercado.length
-      );
-      ganadoresFinales.push(ganadoresSupermercado[ganadorIndex]);
-    });
-
-    // Imprimir los ganadores finales
-    console.log(ganadoresFinales);
-
-    console.log("ganadores", ganadores);
-    console.log("ganadoresFinales", ganadoresFinales);
-
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.json_to_sheet(ganadoresFinales);
+    const ws = XLSX.utils.json_to_sheet(ganadores);
     XLSX.utils.book_append_sheet(wb, ws, "Ganadores");
 
     const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
@@ -105,13 +81,13 @@ const Excel = () => {
     <div className={styles.divAdmin}>
       <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
       <button onClick={descargarExcel}>Descargar Excel</button>
-      {Object.keys(ganadores).length > 0 && (
+      {ganadores.length > 0 && (
         <div>
           <h2>Ganadores</h2>
           <ul>
-            {Object.entries(ganadores).map(([cadena, ganador]) => (
-              <li key={cadena}>
-                {cadena}: {ganador.nombre} (ID: {ganador.id})
+            {ganadores.map((ganador, index) => (
+              <li key={index}>
+                {ganador.supermercado}: {ganador.nombre} (ID: {ganador.id})
               </li>
             ))}
           </ul>
